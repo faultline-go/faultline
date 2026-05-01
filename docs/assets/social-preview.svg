@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">Faultline social preview</title>
+  <desc id="desc">Faultline, local-first structural risk analysis for Go codebases.</desc>
+  <rect width="1280" height="640" fill="#142320"/>
+  <path d="M0 520 C180 455 300 585 480 520 C640 465 760 560 930 500 C1080 448 1180 500 1280 462 L1280 640 L0 640 Z" fill="#2f6f73"/>
+  <path d="M0 570 C170 500 310 620 500 555 C690 490 820 604 1010 532 C1130 486 1210 520 1280 494 L1280 640 L0 640 Z" fill="#f7f7f4" opacity="0.94"/>
+
+  <g transform="translate(80 76)">
+    <rect width="92" height="92" rx="18" fill="#f7f7f4"/>
+    <path d="M22 58 L39 28 L52 58 L68 32" fill="none" stroke="#9f2435" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="120" y="62" fill="#ffffff" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="64" font-weight="800">Faultline</text>
+  </g>
+
+  <text x="84" y="248" fill="#ffffff" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="46" font-weight="700">Structural risk analysis for Go codebases</text>
+  <text x="86" y="306" fill="#cbd9d2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26">Local-first CLI · HTML / JSON / SARIF · no source upload</text>
+
+  <g transform="translate(86 372)" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22">
+    <rect width="264" height="54" rx="8" fill="#ffffff" opacity="0.98"/>
+    <text x="24" y="35" fill="#142320" font-weight="700">churn + coverage</text>
+    <rect x="286" width="236" height="54" rx="8" fill="#ffffff" opacity="0.98"/>
+    <text x="310" y="35" fill="#142320" font-weight="700">ownership</text>
+    <rect x="544" width="214" height="54" rx="8" fill="#ffffff" opacity="0.98"/>
+    <text x="568" y="35" fill="#142320" font-weight="700">boundaries</text>
+    <rect x="780" width="230" height="54" rx="8" fill="#ffffff" opacity="0.98"/>
+    <text x="804" y="35" fill="#142320" font-weight="700">dependencies</text>
+  </g>
+
+  <g transform="translate(80 488)">
+    <rect width="1120" height="78" rx="12" fill="#0b1513" opacity="0.96"/>
+    <text x="32" y="50" fill="#ffffff" font-family="Menlo, Consolas, monospace" font-size="31" font-weight="800">faultline scan ./... --format html --out faultline-report.html</text>
+  </g>
+</svg>

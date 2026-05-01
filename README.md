@@ -5,9 +5,28 @@
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Go Reference](https://pkg.go.dev/badge/github.com/faultline-go/faultline.svg)](https://pkg.go.dev/github.com/faultline-go/faultline)
 
-Faultline is structural risk analysis for Go codebases. It scans Go repositories and produces explainable package-level risk reports from code structure, git history, ownership, coverage, and architecture policy inputs.
+**Local-first structural risk analysis for Go codebases.**
 
-Faultline is local-first. It does not upload source code, run a server, execute repository scripts, or require runtime network access.
+Faultline scans Go repositories and produces explainable package-level risk reports from code structure, git history, ownership, coverage, dependency metadata, and architecture policy inputs. It is designed for teams that need to find technical-debt hotspots before they become incidents.
+
+```sh
+go install github.com/faultline-go/faultline/cmd/faultline@latest
+faultline scan ./... --format html --out faultline-report.html
+```
+
+![Faultline report preview](docs/assets/report-preview.svg)
+
+Faultline is local-first. It does not upload source code, run a server, execute repository scripts, or require runtime network access. Reports can be generated as HTML, JSON, or SARIF for GitHub code scanning.
+
+Try a bundled sample:
+
+```sh
+go build -o bin/faultline ./cmd/faultline
+cd testdata/simple-go-module
+../../bin/faultline scan ./... --format html --out faultline-report.html --no-history
+```
+
+See [docs/demo.md](docs/demo.md) for example output and [examples/reports](examples/reports) for generated sample reports.
 
 Faultline OSS is Apache 2.0 licensed. The public project is intended to stay genuinely useful for local and CI workflows; paid products should monetize organization-wide governance and automation rather than cripple local scanning.
 
@@ -115,6 +134,10 @@ Faultline accepts contributions under Apache 2.0 with Developer Certificate of O
 ```sh
 git commit -s
 ```
+
+Useful first contributions include noisy finding reports, sample configs from real
+Go monorepos, docs fixes, and small scanner edge cases. Use the `Noisy finding`
+issue template when a report is technically correct but not useful.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidance and [SECURITY.md](SECURITY.md) for vulnerability reporting. The Faultline name and marks are not licensed by Apache 2.0; see [NOTICE](NOTICE).
 

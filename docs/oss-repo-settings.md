@@ -131,6 +131,9 @@ taxonomy.
 
 ## Social Preview
 
-Add a simple social preview image once branding is stable. Avoid marketing copy
-that implies cloud upload is required; the OSS trust message should be
-local-first, source-free by default, and useful without login.
+Use `docs/assets/social-preview.svg` as the source artwork. GitHub's social
+preview uploader currently expects PNG, JPG, or GIF, so export the SVG to a
+1280x640 PNG before uploading it in repository settings.
+
+Avoid marketing copy that implies cloud upload is required; the OSS trust
+message should be local-first, source-free by default, and useful without login.

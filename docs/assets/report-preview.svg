@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Faultline HTML report preview</title>
+  <desc id="desc">A stylized preview of a Faultline package risk report showing summary cards, risky packages, and findings.</desc>
+  <rect width="1280" height="720" fill="#f7f7f4"/>
+  <rect x="0" y="0" width="1280" height="130" fill="#142320"/>
+  <text x="54" y="62" fill="#ffffff" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="38" font-weight="700">Faultline Report</text>
+  <text x="54" y="96" fill="#cbd9d2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">Structural risk analysis for Go codebases · local-first · evidence-backed</text>
+
+  <g transform="translate(54 166)">
+    <g>
+      <rect width="178" height="92" rx="8" fill="#ffffff" stroke="#d8ddd5"/>
+      <text x="18" y="32" fill="#68716b" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16">Packages</text>
+      <text x="18" y="70" fill="#1e2420" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">42</text>
+    </g>
+    <g transform="translate(196 0)">
+      <rect width="178" height="92" rx="8" fill="#ffffff" stroke="#d8ddd5"/>
+      <text x="18" y="32" fill="#68716b" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16">High risk</text>
+      <text x="18" y="70" fill="#9f2435" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">3</text>
+    </g>
+    <g transform="translate(392 0)">
+      <rect width="178" height="92" rx="8" fill="#ffffff" stroke="#d8ddd5"/>
+      <text x="18" y="32" fill="#68716b" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16">Warnings</text>
+      <text x="18" y="70" fill="#a14d1b" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">1</text>
+    </g>
+    <g transform="translate(588 0)">
+      <rect width="178" height="92" rx="8" fill="#ffffff" stroke="#d8ddd5"/>
+      <text x="18" y="32" fill="#68716b" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16">Generated</text>
+      <text x="18" y="70" fill="#1e2420" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">8.1%</text>
+    </g>
+  </g>
+
+  <g transform="translate(54 300)">
+    <text x="0" y="0" fill="#1e2420" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="700">Top Risky Packages</text>
+    <rect x="0" y="24" width="1172" height="220" fill="#ffffff" stroke="#d8ddd5"/>
+    <rect x="0" y="24" width="1172" height="42" fill="#eef1ec"/>
+    <text x="22" y="51" fill="#48524c" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">PACKAGE</text>
+    <text x="650" y="51" fill="#48524c" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">RISK</text>
+    <text x="790" y="51" fill="#48524c" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">CHURN</text>
+    <text x="940" y="51" fill="#48524c" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">OWNER</text>
+
+    <g font-family="Menlo, Consolas, monospace" font-size="16">
+      <text x="22" y="99" fill="#1e2420">github.com/acme/api/internal/handlers</text>
+      <text x="650" y="99" fill="#9f2435" font-weight="700">82.40</text>
+      <text x="790" y="99" fill="#1e2420">914</text>
+      <text x="940" y="99" fill="#68716b">@platform-team</text>
+      <line x1="0" y1="120" x2="1172" y2="120" stroke="#d8ddd5"/>
+
+      <text x="22" y="154" fill="#1e2420">github.com/acme/payments/internal/store</text>
+      <text x="650" y="154" fill="#a14d1b" font-weight="700">61.75</text>
+      <text x="790" y="154" fill="#1e2420">402</text>
+      <text x="940" y="154" fill="#68716b">unknown</text>
+      <line x1="0" y1="175" x2="1172" y2="175" stroke="#d8ddd5"/>
+
+      <text x="22" y="209" fill="#1e2420">github.com/acme/shared/proto</text>
+      <text x="650" y="209" fill="#1e2420" font-weight="700">38.20</text>
+      <text x="790" y="209" fill="#1e2420">50</text>
+      <text x="940" y="209" fill="#68716b">@infra-team</text>
+    </g>
+  </g>
+
+  <g transform="translate(54 586)">
+    <rect width="1172" height="76" rx="8" fill="#ffffff" stroke="#d8ddd5"/>
+    <text x="22" y="32" fill="#9f2435" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">FL-BND-001 · Boundary violation</text>
+    <text x="22" y="56" fill="#1e2420" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15">internal/handlers imports forbidden internal/storage package · evidence includes rule, import, owner, and location</text>
+  </g>
+</svg>

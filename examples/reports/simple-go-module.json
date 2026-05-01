@@ -1,0 +1,668 @@
+{
+  "meta": {
+    "version": "0.1.0-dev",
+    "commit": "unknown",
+    "scan_time": "2026-04-30T00:00:00Z",
+    "repo_path": "testdata/simple-go-module",
+    "repo_display_name": "faultline-go/faultline",
+    "repo_fingerprint": "6130523587543b1ca56edb5f9c1f8414370f50f8796d3a7093e7f63d10ba4b54",
+    "patterns": [
+      "./..."
+    ],
+    "config_hash": "615ccd5983d3aaaee04a8b2be7aaf4dcad2b4bfd21b523af075eb7fe2488dd7c"
+  },
+  "warnings": [
+    {
+      "message": "coverage profile was not supplied; coverage is unknown",
+      "source": "coverage"
+    }
+  ],
+  "scoring_version": "faultline-risk-v0.2",
+  "config_summary": {
+    "ownership_require_codeowners": false,
+    "ownership_max_author_count_90d": 6,
+    "coverage_min_package_coverage": 60,
+    "scoring_churn_max_lines_30d": 1000,
+    "scoring_complexity_max_loc": 1000,
+    "scoring_complexity_max_imports": 20,
+    "scoring_complexity_max_files": 30,
+    "scoring_dependency_centrality_max_reverse_imports": 10,
+    "boundary_rule_count": 0,
+    "suppression_count": 0
+  },
+  "modules": [
+    {
+      "module_path": "github.com/faultline-go/faultline/testdata/simple-go-module",
+      "module_root": ".",
+      "go_mod_path": "go.mod",
+      "included_by_go_work": false,
+      "selected": true
+    }
+  ],
+  "packages": [
+    {
+      "package_id": "github.com/faultline-go/faultline/testdata/simple-go-module|github.com/faultline-go/faultline/testdata/simple-go-module",
+      "import_path": "github.com/faultline-go/faultline/testdata/simple-go-module",
+      "dir": ".",
+      "module_path": "github.com/faultline-go/faultline/testdata/simple-go-module",
+      "module_root": ".",
+      "loc": 9,
+      "test_loc": 0,
+      "generated_loc": 0,
+      "file_count": 1,
+      "generated_file_count": 0,
+      "import_count": 2,
+      "reverse_import_count": 0,
+      "direct_internal_imports": [
+        "github.com/faultline-go/faultline/testdata/simple-go-module/internal/store",
+        "github.com/faultline-go/faultline/testdata/simple-go-module/pkg/mathy"
+      ],
+      "churn_30d": 48,
+      "churn_90d": 48,
+      "author_count_90d": 1,
+      "dominant_owner": "mike.holownych@aisyndicate.io",
+      "owner_source": "git_author",
+      "candidate_owners": [
+        {
+          "owner": "mike.holownych@aisyndicate.io",
+          "source": "git_author",
+          "confidence": 0.45,
+          "detail": "mike.holownych@aisyndicate.io"
+        }
+      ],
+      "ownership_confidence": 0.45,
+      "ownership_entropy": 0,
+      "complexity_score": 4.57,
+      "risk_score": 12.11,
+      "score_breakdown": {
+        "churn_score": 4.8,
+        "coverage_gap_score": 50,
+        "complexity_score": 4.57,
+        "ownership_entropy_score": 0,
+        "dependency_centrality_score": 0
+      },
+      "findings": [
+        {
+          "id": "FL-COV-002",
+          "category": "COVERAGE",
+          "severity": "LOW",
+          "title": "Coverage data is missing",
+          "description": "No coverage profile was supplied, so coverage was treated as unknown.",
+          "evidence": [
+            {
+              "key": "coverage",
+              "value": "unknown",
+              "source": "cli"
+            }
+          ],
+          "recommendation": "Run go test with -coverprofile for all scanned packages and pass --coverage.",
+          "confidence": 1
+        }
+      ],
+      "evidence": [
+        {
+          "key": "git_window_30d",
+          "value": "30 days ago",
+          "source": "git"
+        },
+        {
+          "key": "git_window_90d",
+          "value": "90 days ago",
+          "source": "git"
+        },
+        {
+          "key": "churn_unit",
+          "value": "added+deleted lines",
+          "source": "git"
+        },
+        {
+          "key": "codeowners_file",
+          "value": "CODEOWNERS",
+          "source": "CODEOWNERS"
+        },
+        {
+          "key": "dominant_git_author",
+          "value": "mike.holownych@aisyndicate.io",
+          "source": "git"
+        },
+        {
+          "key": "dominant_git_owner",
+          "value": "mike.holownych@aisyndicate.io",
+          "source": "git_author"
+        },
+        {
+          "key": "dominant_git_share",
+          "value": "1.00",
+          "source": "git"
+        },
+        {
+          "key": "selected_owner",
+          "value": "mike.holownych@aisyndicate.io",
+          "source": "ownership"
+        },
+        {
+          "key": "owner_source",
+          "value": "git_author",
+          "source": "ownership"
+        },
+        {
+          "key": "ownership_confidence",
+          "value": "0.45",
+          "source": "ownership"
+        },
+        {
+          "key": "owner_candidate",
+          "value": "mike.holownych@aisyndicate.io (git_author)",
+          "source": "ownership"
+        },
+        {
+          "key": "churn_score",
+          "value": "4.80",
+          "source": "scoring"
+        },
+        {
+          "key": "coverage_gap_score",
+          "value": "50.00",
+          "source": "scoring"
+        },
+        {
+          "key": "complexity_score",
+          "value": "4.57",
+          "source": "scoring"
+        },
+        {
+          "key": "ownership_entropy_score",
+          "value": "0.00",
+          "source": "scoring"
+        },
+        {
+          "key": "dependency_centrality_score",
+          "value": "0.00",
+          "source": "scoring"
+        },
+        {
+          "key": "risk_score",
+          "value": "12.11",
+          "source": "scoring"
+        },
+        {
+          "key": "scoring_version",
+          "value": "faultline-risk-v0.2",
+          "source": "scoring"
+        }
+      ]
+    },
+    {
+      "package_id": "github.com/faultline-go/faultline/testdata/simple-go-module|github.com/faultline-go/faultline/testdata/simple-go-module/internal/store",
+      "import_path": "github.com/faultline-go/faultline/testdata/simple-go-module/internal/store",
+      "dir": "internal/store",
+      "module_path": "github.com/faultline-go/faultline/testdata/simple-go-module",
+      "module_root": ".",
+      "loc": 4,
+      "test_loc": 0,
+      "generated_loc": 0,
+      "file_count": 1,
+      "generated_file_count": 0,
+      "import_count": 0,
+      "reverse_import_count": 1,
+      "churn_30d": 5,
+      "churn_90d": 5,
+      "author_count_90d": 1,
+      "dominant_owner": "@platform-team",
+      "owner_source": "CODEOWNERS",
+      "candidate_owners": [
+        {
+          "owner": "@platform-team",
+          "source": "CODEOWNERS",
+          "confidence": 0.9,
+          "detail": "CODEOWNERS:2 /internal/store/"
+        },
+        {
+          "owner": "mike.holownych@aisyndicate.io",
+          "source": "git_author",
+          "confidence": 0.45,
+          "detail": "mike.holownych@aisyndicate.io"
+        }
+      ],
+      "ownership_confidence": 0.9,
+      "ownership_entropy": 0,
+      "complexity_score": 0.85,
+      "risk_score": 11.79,
+      "score_breakdown": {
+        "churn_score": 0.5,
+        "coverage_gap_score": 50,
+        "complexity_score": 0.85,
+        "ownership_entropy_score": 0,
+        "dependency_centrality_score": 10
+      },
+      "findings": [
+        {
+          "id": "FL-COV-002",
+          "category": "COVERAGE",
+          "severity": "LOW",
+          "title": "Coverage data is missing",
+          "description": "No coverage profile was supplied, so coverage was treated as unknown.",
+          "evidence": [
+            {
+              "key": "coverage",
+              "value": "unknown",
+              "source": "cli"
+            }
+          ],
+          "recommendation": "Run go test with -coverprofile for all scanned packages and pass --coverage.",
+          "confidence": 1
+        },
+        {
+          "id": "FL-OWN-003",
+          "category": "OWNERSHIP",
+          "severity": "MEDIUM",
+          "title": "CODEOWNERS owner differs from dominant git author",
+          "description": "The CODEOWNERS owner for this package differs from the dominant recent git author or configured ownership alias.",
+          "evidence": [
+            {
+              "key": "codeowners_matched_file",
+              "value": "CODEOWNERS",
+              "source": "CODEOWNERS"
+            },
+            {
+              "key": "codeowners_matched_line",
+              "value": "2",
+              "source": "CODEOWNERS"
+            },
+            {
+              "key": "codeowners_matched_pattern",
+              "value": "/internal/store/",
+              "source": "CODEOWNERS"
+            },
+            {
+              "key": "codeowners_owners",
+              "value": "@platform-team",
+              "source": "CODEOWNERS"
+            },
+            {
+              "key": "dominant_git_author",
+              "value": "mike.holownych@aisyndicate.io",
+              "source": "git"
+            },
+            {
+              "key": "dominant_git_owner",
+              "value": "mike.holownych@aisyndicate.io",
+              "source": "ownership"
+            },
+            {
+              "key": "dominant_git_share",
+              "value": "1.00",
+              "source": "git"
+            }
+          ],
+          "recommendation": "Confirm whether CODEOWNERS reflects current stewardship, then update CODEOWNERS or ownership aliases if responsibility moved.",
+          "confidence": 0.7
+        }
+      ],
+      "evidence": [
+        {
+          "key": "git_window_30d",
+          "value": "30 days ago",
+          "source": "git"
+        },
+        {
+          "key": "git_window_90d",
+          "value": "90 days ago",
+          "source": "git"
+        },
+        {
+          "key": "churn_unit",
+          "value": "added+deleted lines",
+          "source": "git"
+        },
+        {
+          "key": "codeowners_file",
+          "value": "CODEOWNERS",
+          "source": "CODEOWNERS"
+        },
+        {
+          "key": "codeowners_owner",
+          "value": "@platform-team",
+          "source": "CODEOWNERS"
+        },
+        {
+          "key": "codeowners_matched_file",
+          "value": "CODEOWNERS",
+          "source": "CODEOWNERS"
+        },
+        {
+          "key": "codeowners_matched_line",
+          "value": "2",
+          "source": "CODEOWNERS"
+        },
+        {
+          "key": "codeowners_matched_pattern",
+          "value": "/internal/store/",
+          "source": "CODEOWNERS"
+        },
+        {
+          "key": "codeowners_matched_owners",
+          "value": "@platform-team",
+          "source": "CODEOWNERS"
+        },
+        {
+          "key": "dominant_git_author",
+          "value": "mike.holownych@aisyndicate.io",
+          "source": "git"
+        },
+        {
+          "key": "dominant_git_owner",
+          "value": "mike.holownych@aisyndicate.io",
+          "source": "git_author"
+        },
+        {
+          "key": "dominant_git_share",
+          "value": "1.00",
+          "source": "git"
+        },
+        {
+          "key": "selected_owner",
+          "value": "@platform-team",
+          "source": "ownership"
+        },
+        {
+          "key": "owner_source",
+          "value": "CODEOWNERS",
+          "source": "ownership"
+        },
+        {
+          "key": "ownership_confidence",
+          "value": "0.90",
+          "source": "ownership"
+        },
+        {
+          "key": "owner_candidate",
+          "value": "@platform-team (CODEOWNERS)",
+          "source": "ownership"
+        },
+        {
+          "key": "owner_candidate",
+          "value": "mike.holownych@aisyndicate.io (git_author)",
+          "source": "ownership"
+        },
+        {
+          "key": "churn_score",
+          "value": "0.50",
+          "source": "scoring"
+        },
+        {
+          "key": "coverage_gap_score",
+          "value": "50.00",
+          "source": "scoring"
+        },
+        {
+          "key": "complexity_score",
+          "value": "0.85",
+          "source": "scoring"
+        },
+        {
+          "key": "ownership_entropy_score",
+          "value": "0.00",
+          "source": "scoring"
+        },
+        {
+          "key": "dependency_centrality_score",
+          "value": "10.00",
+          "source": "scoring"
+        },
+        {
+          "key": "risk_score",
+          "value": "11.79",
+          "source": "scoring"
+        },
+        {
+          "key": "scoring_version",
+          "value": "faultline-risk-v0.2",
+          "source": "scoring"
+        }
+      ]
+    },
+    {
+      "package_id": "github.com/faultline-go/faultline/testdata/simple-go-module|github.com/faultline-go/faultline/testdata/simple-go-module/pkg/mathy",
+      "import_path": "github.com/faultline-go/faultline/testdata/simple-go-module/pkg/mathy",
+      "dir": "pkg/mathy",
+      "module_path": "github.com/faultline-go/faultline/testdata/simple-go-module",
+      "module_root": ".",
+      "loc": 11,
+      "test_loc": 7,
+      "generated_loc": 2,
+      "file_count": 3,
+      "generated_file_count": 1,
+      "import_count": 0,
+      "reverse_import_count": 1,
+      "churn_30d": 26,
+      "churn_90d": 26,
+      "author_count_90d": 1,
+      "dominant_owner": "@math-team",
+      "owner_source": "CODEOWNERS",
+      "candidate_owners": [
+        {
+          "owner": "@math-team",
+          "source": "CODEOWNERS",
+          "confidence": 0.9,
+          "detail": "CODEOWNERS:1 /pkg/mathy/"
+        },
+        {
+          "owner": "mike.holownych@aisyndicate.io",
+          "source": "git_author",
+          "confidence": 0.45,
+          "detail": "mike.holownych@aisyndicate.io"
+        }
+      ],
+      "ownership_confidence": 0.9,
+      "ownership_entropy": 0,
+      "complexity_score": 1.83,
+      "risk_score": 12.52,
+      "score_breakdown": {
+        "churn_score": 2.6,
+        "coverage_gap_score": 50,
+        "complexity_score": 1.83,
+        "ownership_entropy_score": 0,
+        "dependency_centrality_score": 10
+      },
+      "findings": [
+        {
+          "id": "FL-COV-002",
+          "category": "COVERAGE",
+          "severity": "LOW",
+          "title": "Coverage data is missing",
+          "description": "No coverage profile was supplied, so coverage was treated as unknown.",
+          "evidence": [
+            {
+              "key": "coverage",
+              "value": "unknown",
+              "source": "cli"
+            }
+          ],
+          "recommendation": "Run go test with -coverprofile for all scanned packages and pass --coverage.",
+          "confidence": 1
+        },
+        {
+          "id": "FL-OWN-003",
+          "category": "OWNERSHIP",
+          "severity": "MEDIUM",
+          "title": "CODEOWNERS owner differs from dominant git author",
+          "description": "The CODEOWNERS owner for this package differs from the dominant recent git author or configured ownership alias.",
+          "evidence": [
+            {
+              "key": "codeowners_matched_file",
+              "value": "CODEOWNERS",
+              "source": "CODEOWNERS"
+            },
+            {
+              "key": "codeowners_matched_line",
+              "value": "1",
+              "source": "CODEOWNERS"
+            },
+            {
+              "key": "codeowners_matched_pattern",
+              "value": "/pkg/mathy/",
+              "source": "CODEOWNERS"
+            },
+            {
+              "key": "codeowners_owners",
+              "value": "@math-team",
+              "source": "CODEOWNERS"
+            },
+            {
+              "key": "dominant_git_author",
+              "value": "mike.holownych@aisyndicate.io",
+              "source": "git"
+            },
+            {
+              "key": "dominant_git_owner",
+              "value": "mike.holownych@aisyndicate.io",
+              "source": "ownership"
+            },
+            {
+              "key": "dominant_git_share",
+              "value": "1.00",
+              "source": "git"
+            }
+          ],
+          "recommendation": "Confirm whether CODEOWNERS reflects current stewardship, then update CODEOWNERS or ownership aliases if responsibility moved.",
+          "confidence": 0.7
+        }
+      ],
+      "evidence": [
+        {
+          "key": "git_window_30d",
+          "value": "30 days ago",
+          "source": "git"
+        },
+        {
+          "key": "git_window_90d",
+          "value": "90 days ago",
+          "source": "git"
+        },
+        {
+          "key": "churn_unit",
+          "value": "added+deleted lines",
+          "source": "git"
+        },
+        {
+          "key": "codeowners_file",
+          "value": "CODEOWNERS",
+          "source": "CODEOWNERS"
+        },
+        {
+          "key": "codeowners_owner",
+          "value": "@math-team",
+          "source": "CODEOWNERS"
+        },
+        {
+          "key": "codeowners_matched_file",
+          "value": "CODEOWNERS",
+          "source": "CODEOWNERS"
+        },
+        {
+          "key": "codeowners_matched_line",
+          "value": "1",
+          "source": "CODEOWNERS"
+        },
+        {
+          "key": "codeowners_matched_pattern",
+          "value": "/pkg/mathy/",
+          "source": "CODEOWNERS"
+        },
+        {
+          "key": "codeowners_matched_owners",
+          "value": "@math-team",
+          "source": "CODEOWNERS"
+        },
+        {
+          "key": "dominant_git_author",
+          "value": "mike.holownych@aisyndicate.io",
+          "source": "git"
+        },
+        {
+          "key": "dominant_git_owner",
+          "value": "mike.holownych@aisyndicate.io",
+          "source": "git_author"
+        },
+        {
+          "key": "dominant_git_share",
+          "value": "1.00",
+          "source": "git"
+        },
+        {
+          "key": "selected_owner",
+          "value": "@math-team",
+          "source": "ownership"
+        },
+        {
+          "key": "owner_source",
+          "value": "CODEOWNERS",
+          "source": "ownership"
+        },
+        {
+          "key": "ownership_confidence",
+          "value": "0.90",
+          "source": "ownership"
+        },
+        {
+          "key": "owner_candidate",
+          "value": "@math-team (CODEOWNERS)",
+          "source": "ownership"
+        },
+        {
+          "key": "owner_candidate",
+          "value": "mike.holownych@aisyndicate.io (git_author)",
+          "source": "ownership"
+        },
+        {
+          "key": "churn_score",
+          "value": "2.60",
+          "source": "scoring"
+        },
+        {
+          "key": "coverage_gap_score",
+          "value": "50.00",
+          "source": "scoring"
+        },
+        {
+          "key": "complexity_score",
+          "value": "1.83",
+          "source": "scoring"
+        },
+        {
+          "key": "ownership_entropy_score",
+          "value": "0.00",
+          "source": "scoring"
+        },
+        {
+          "key": "dependency_centrality_score",
+          "value": "10.00",
+          "source": "scoring"
+        },
+        {
+          "key": "risk_score",
+          "value": "12.52",
+          "source": "scoring"
+        },
+        {
+          "key": "scoring_version",
+          "value": "faultline-risk-v0.2",
+          "source": "scoring"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_packages": 3,
+    "high_risk_count": 0,
+    "warning_count": 1,
+    "suppressed_count": 0,
+    "total_findings": 5,
+    "critical_count": 0,
+    "high_count": 0,
+    "medium_count": 2,
+    "low_count": 3,
+    "generated_file_pct": 20
+  }
+}

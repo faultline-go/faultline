@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faultline Report</title>
+<style>
+:root{color-scheme:light;--bg:#f7f7f4;--fg:#1e2420;--muted:#68716b;--line:#d8ddd5;--panel:#fff;--accent:#2f6f73;--warn:#a14d1b;--bad:#9f2435}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{background:#142320;color:#fff;padding:28px 32px}
+header h1{font-size:28px;margin:0 0 8px}
+header p{margin:0;color:#cbd9d2}
+main{max-width:1180px;margin:0 auto;padding:24px 20px 48px}
+section{margin:0 0 28px}
+h2{font-size:18px;margin:0 0 12px}
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.metric{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px}
+.metric strong{display:block;font-size:22px}
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line)}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:12px;text-transform:uppercase;color:#48524c;background:#eef1ec}
+th button{all:unset;cursor:pointer}
+tr:last-child td{border-bottom:0}
+.score{font-weight:700}
+.score.high{color:var(--bad)}
+.score.med{color:var(--warn)}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}
+.warning{background:#fff7e8;border:1px solid #e4c37a;border-radius:8px;padding:10px;margin:8px 0}
+.finding{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px;margin:8px 0}
+.finding.suppressed{border-color:#b8c5d6;background:#f7f9fc}
+.finding h3{font-size:15px;margin:0 0 6px}
+.badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 7px;font-size:11px;color:var(--muted)}
+.muted{color:var(--muted)}
+details{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px;margin:8px 0}
+summary{cursor:pointer;font-weight:700}
+</style>
+</head>
+<body>
+<header>
+<h1>Faultline Report</h1>
+<p>Scan time: 2026-04-30 00:00:00 UTC · Version: 0.1.0-dev · Repository: faultline-go/faultline · Fingerprint: 613052358754 · Config hash: 615ccd5983d3 · History match: </p>
+
+</header>
+<main>
+<section class="summary">
+<div class="metric"><span class="muted">Packages</span><strong>3</strong></div>
+<div class="metric"><span class="muted">High risk</span><strong>0</strong></div>
+<div class="metric"><span class="muted">Warnings</span><strong>1</strong></div>
+<div class="metric"><span class="muted">Suppressed</span><strong>0</strong></div>
+<div class="metric"><span class="muted">Generated files</span><strong>20.0%</strong></div>
+<div class="metric"><span class="muted">Dependencies</span><strong>0</strong></div>
+</section>
+
+<section>
+<h2>Warnings</h2>
+<div class="warning"><span class="mono">coverage</span> coverage profile was not supplied; coverage is unknown</div>
+</section>
+
+<section>
+<h2>Modules</h2>
+
+<table><thead><tr><th>Module</th><th>Root</th><th>go.mod</th><th>go.work</th><th>Scanned</th></tr></thead><tbody>
+<tr><td class="mono">github.com/faultline-go/faultline/testdata/simple-go-module</td><td class="mono">.</td><td class="mono">go.mod</td><td>false</td><td>true</td></tr>
+</tbody></table>
+</section>
+
+
+
+<section>
+<h2>Top 10 Risky Packages</h2>
+<table><thead><tr><th>Package</th><th>Risk</th><th>LOC</th><th>Coverage</th><th>Churn 30d</th><th>Reverse Imports</th></tr></thead><tbody>
+<tr><td class="mono">github.com/faultline-go/faultline/testdata/simple-go-module/pkg/mathy</td><td class="score ">12.52</td><td>11</td><td>n/a</td><td>26</td><td>1</td></tr><tr><td class="mono">github.com/faultline-go/faultline/testdata/simple-go-module</td><td class="score ">12.11</td><td>9</td><td>n/a</td><td>48</td><td>0</td></tr><tr><td class="mono">github.com/faultline-go/faultline/testdata/simple-go-module/internal/store</td><td class="score ">11.79</td><td>4</td><td>n/a</td><td>5</td><td>1</td></tr>
+</tbody></table>
+</section>
+
+
+
+<section>
+<h2>Package Risk Table</h2>
+<table id="packages"><thead><tr><th><button data-sort="text">Module</button></th><th><button data-sort="text">Package</button></th><th><button data-sort="text">Dir</button></th><th><button data-sort="num">Risk</button></th><th><button data-sort="num">Delta</button></th><th><button data-sort="text">Trend</button></th><th><button data-sort="num">Complexity</button></th><th><button data-sort="num">Files</button></th><th><button data-sort="num">Generated</button></th><th><button data-sort="num">Imports</button></th><th><button data-sort="num">Reverse</button></th><th><button data-sort="text">Owner</button></th><th><button data-sort="text">Owner Source</button></th><th><button data-sort="num">Owner Confidence</button></th><th><button data-sort="text">Owner Candidates</button></th></tr></thead><tbody>
+<tr><td class="mono">github.com/faultline-go/faultline/testdata/simple-go-module</td><td class="mono">github.com/faultline-go/faultline/testdata/simple-go-module</td><td class="mono">.</td><td class="score ">12.11</td><td>n/a</td><td></td><td>4.57</td><td>1</td><td>0</td><td>2</td><td>0</td><td>mike.holownych@aisyndicate.io</td><td>git_author</td><td>0.45</td><td class="mono">mike.holownych@aisyndicate.io (git_author)</td></tr><tr><td class="mono">github.com/faultline-go/faultline/testdata/simple-go-module</td><td class="mono">github.com/faultline-go/faultline/testdata/simple-go-module/internal/store</td><td class="mono">internal/store</td><td class="score ">11.79</td><td>n/a</td><td></td><td>0.85</td><td>1</td><td>0</td><td>0</td><td>1</td><td>@platform-team</td><td>CODEOWNERS</td><td>0.90</td><td class="mono">@platform-team (CODEOWNERS), mike.holownych@aisyndicate.io (git_author)</td></tr><tr><td class="mono">github.com/faultline-go/faultline/testdata/simple-go-module</td><td class="mono">github.com/faultline-go/faultline/testdata/simple-go-module/pkg/mathy</td><td class="mono">pkg/mathy</td><td class="score ">12.52</td><td>n/a</td><td></td><td>1.83</td><td>3</td><td>1</td><td>0</td><td>1</td><td>@math-team</td><td>CODEOWNERS</td><td>0.90</td><td class="mono">@math-team (CODEOWNERS), mike.holownych@aisyndicate.io (git_author)</td></tr>
+</tbody></table>
+</section>
+
+<section>
+<h2>Findings By Severity And Category</h2>
+
+<h3>MEDIUM</h3>
+<h4>OWNERSHIP</h4>
+<div class="finding "><h3>FL-OWN-003 · CODEOWNERS owner differs from dominant git author  <span class="muted mono">github.com/faultline-go/faultline/testdata/simple-go-module/internal/store</span></h3><p>The CODEOWNERS owner for this package differs from the dominant recent git author or configured ownership alias.</p><p><strong>Recommendation:</strong> Confirm whether CODEOWNERS reflects current stewardship, then update CODEOWNERS or ownership aliases if responsibility moved.</p><div class="mono">codeowners_matched_file=CODEOWNERS (CODEOWNERS)</div><div class="mono">codeowners_matched_line=2 (CODEOWNERS)</div><div class="mono">codeowners_matched_pattern=/internal/store/ (CODEOWNERS)</div><div class="mono">codeowners_owners=@platform-team (CODEOWNERS)</div><div class="mono">dominant_git_author=mike.holownych@aisyndicate.io (git)</div><div class="mono">dominant_git_owner=mike.holownych@aisyndicate.io (ownership)</div><div class="mono">dominant_git_share=1.00 (git)</div></div><div class="finding "><h3>FL-OWN-003 · CODEOWNERS owner differs from dominant git author  <span class="muted mono">github.com/faultline-go/faultline/testdata/simple-go-module/pkg/mathy</span></h3><p>The CODEOWNERS owner for this package differs from the dominant recent git author or configured ownership alias.</p><p><strong>Recommendation:</strong> Confirm whether CODEOWNERS reflects current stewardship, then update CODEOWNERS or ownership aliases if responsibility moved.</p><div class="mono">codeowners_matched_file=CODEOWNERS (CODEOWNERS)</div><div class="mono">codeowners_matched_line=1 (CODEOWNERS)</div><div class="mono">codeowners_matched_pattern=/pkg/mathy/ (CODEOWNERS)</div><div class="mono">codeowners_owners=@math-team (CODEOWNERS)</div><div class="mono">dominant_git_author=mike.holownych@aisyndicate.io (git)</div><div class="mono">dominant_git_owner=mike.holownych@aisyndicate.io (ownership)</div><div class="mono">dominant_git_share=1.00 (git)</div></div>
+
+<h3>LOW</h3>
+<h4>COVERAGE</h4>
+<div class="finding "><h3>FL-COV-002 · Coverage data is missing  <span class="muted mono">github.com/faultline-go/faultline/testdata/simple-go-module</span></h3><p>No coverage profile was supplied, so coverage was treated as unknown.</p><p><strong>Recommendation:</strong> Run go test with -coverprofile for all scanned packages and pass --coverage.</p><div class="mono">coverage=unknown (cli)</div></div><div class="finding "><h3>FL-COV-002 · Coverage data is missing  <span class="muted mono">github.com/faultline-go/faultline/testdata/simple-go-module/internal/store</span></h3><p>No coverage profile was supplied, so coverage was treated as unknown.</p><p><strong>Recommendation:</strong> Run go test with -coverprofile for all scanned packages and pass --coverage.</p><div class="mono">coverage=unknown (cli)</div></div><div class="finding "><h3>FL-COV-002 · Coverage data is missing  <span class="muted mono">github.com/faultline-go/faultline/testdata/simple-go-module/pkg/mathy</span></h3><p>No coverage profile was supplied, so coverage was treated as unknown.</p><p><strong>Recommendation:</strong> Run go test with -coverprofile for all scanned packages and pass --coverage.</p><div class="mono">coverage=unknown (cli)</div></div>
+
+</section>
+
+
+
+<section>
+<h2>Evidence Appendix</h2>
+<details><summary>github.com/faultline-go/faultline/testdata/simple-go-module · risk 12.11</summary><div class="mono">git_window_30d=30 days ago (git)</div><div class="mono">git_window_90d=90 days ago (git)</div><div class="mono">churn_unit=added&#43;deleted lines (git)</div><div class="mono">codeowners_file=CODEOWNERS (CODEOWNERS)</div><div class="mono">dominant_git_author=mike.holownych@aisyndicate.io (git)</div><div class="mono">dominant_git_owner=mike.holownych@aisyndicate.io (git_author)</div><div class="mono">dominant_git_share=1.00 (git)</div><div class="mono">selected_owner=mike.holownych@aisyndicate.io (ownership)</div><div class="mono">owner_source=git_author (ownership)</div><div class="mono">ownership_confidence=0.45 (ownership)</div><div class="mono">owner_candidate=mike.holownych@aisyndicate.io (git_author) (ownership)</div><div class="mono">churn_score=4.80 (scoring)</div><div class="mono">coverage_gap_score=50.00 (scoring)</div><div class="mono">complexity_score=4.57 (scoring)</div><div class="mono">ownership_entropy_score=0.00 (scoring)</div><div class="mono">dependency_centrality_score=0.00 (scoring)</div><div class="mono">risk_score=12.11 (scoring)</div><div class="mono">scoring_version=faultline-risk-v0.2 (scoring)</div></details><details><summary>github.com/faultline-go/faultline/testdata/simple-go-module/internal/store · risk 11.79</summary><div class="mono">git_window_30d=30 days ago (git)</div><div class="mono">git_window_90d=90 days ago (git)</div><div class="mono">churn_unit=added&#43;deleted lines (git)</div><div class="mono">codeowners_file=CODEOWNERS (CODEOWNERS)</div><div class="mono">codeowners_owner=@platform-team (CODEOWNERS)</div><div class="mono">codeowners_matched_file=CODEOWNERS (CODEOWNERS)</div><div class="mono">codeowners_matched_line=2 (CODEOWNERS)</div><div class="mono">codeowners_matched_pattern=/internal/store/ (CODEOWNERS)</div><div class="mono">codeowners_matched_owners=@platform-team (CODEOWNERS)</div><div class="mono">dominant_git_author=mike.holownych@aisyndicate.io (git)</div><div class="mono">dominant_git_owner=mike.holownych@aisyndicate.io (git_author)</div><div class="mono">dominant_git_share=1.00 (git)</div><div class="mono">selected_owner=@platform-team (ownership)</div><div class="mono">owner_source=CODEOWNERS (ownership)</div><div class="mono">ownership_confidence=0.90 (ownership)</div><div class="mono">owner_candidate=@platform-team (CODEOWNERS) (ownership)</div><div class="mono">owner_candidate=mike.holownych@aisyndicate.io (git_author) (ownership)</div><div class="mono">churn_score=0.50 (scoring)</div><div class="mono">coverage_gap_score=50.00 (scoring)</div><div class="mono">complexity_score=0.85 (scoring)</div><div class="mono">ownership_entropy_score=0.00 (scoring)</div><div class="mono">dependency_centrality_score=10.00 (scoring)</div><div class="mono">risk_score=11.79 (scoring)</div><div class="mono">scoring_version=faultline-risk-v0.2 (scoring)</div></details><details><summary>github.com/faultline-go/faultline/testdata/simple-go-module/pkg/mathy · risk 12.52</summary><div class="mono">git_window_30d=30 days ago (git)</div><div class="mono">git_window_90d=90 days ago (git)</div><div class="mono">churn_unit=added&#43;deleted lines (git)</div><div class="mono">codeowners_file=CODEOWNERS (CODEOWNERS)</div><div class="mono">codeowners_owner=@math-team (CODEOWNERS)</div><div class="mono">codeowners_matched_file=CODEOWNERS (CODEOWNERS)</div><div class="mono">codeowners_matched_line=1 (CODEOWNERS)</div><div class="mono">codeowners_matched_pattern=/pkg/mathy/ (CODEOWNERS)</div><div class="mono">codeowners_matched_owners=@math-team (CODEOWNERS)</div><div class="mono">dominant_git_author=mike.holownych@aisyndicate.io (git)</div><div class="mono">dominant_git_owner=mike.holownych@aisyndicate.io (git_author)</div><div class="mono">dominant_git_share=1.00 (git)</div><div class="mono">selected_owner=@math-team (ownership)</div><div class="mono">owner_source=CODEOWNERS (ownership)</div><div class="mono">ownership_confidence=0.90 (ownership)</div><div class="mono">owner_candidate=@math-team (CODEOWNERS) (ownership)</div><div class="mono">owner_candidate=mike.holownych@aisyndicate.io (git_author) (ownership)</div><div class="mono">churn_score=2.60 (scoring)</div><div class="mono">coverage_gap_score=50.00 (scoring)</div><div class="mono">complexity_score=1.83 (scoring)</div><div class="mono">ownership_entropy_score=0.00 (scoring)</div><div class="mono">dependency_centrality_score=10.00 (scoring)</div><div class="mono">risk_score=12.52 (scoring)</div><div class="mono">scoring_version=faultline-risk-v0.2 (scoring)</div></details>
+</section>
+
+<section>
+<h2>Limitations</h2>
+<p>Faultline uses simple package-level and module-level heuristics. Scores are directional, not proof of defects. Git history may be unavailable in shallow clones, coverage is only considered when a profile is supplied, CODEOWNERS matching is approximate, and dependency risk is structural rather than vulnerability scanning.</p>
+</section>
+</main>
+<script>
+document.querySelectorAll("#packages th button").forEach(function(button, index) {
+  button.addEventListener("click", function() {
+    var tbody = document.querySelector("#packages tbody");
+    var rows = Array.from(tbody.querySelectorAll("tr"));
+    var numeric = button.dataset.sort === "num";
+    var dir = button.dataset.dir === "asc" ? -1 : 1;
+    document.querySelectorAll("#packages th button").forEach(function(b) { b.dataset.dir = ""; });
+    button.dataset.dir = dir === 1 ? "asc" : "desc";
+    rows.sort(function(a, b) {
+      var av = a.children[index].textContent.trim();
+      var bv = b.children[index].textContent.trim();
+      if (numeric) {
+        av = parseFloat(av) || 0;
+        bv = parseFloat(bv) || 0;
+        return (av - bv) * dir;
+      }
+      return av.localeCompare(bv) * dir;
+    });
+    rows.forEach(function(row) { tbody.appendChild(row); });
+  });
+});
+</script>
+</body>
+</html>

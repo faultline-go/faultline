@@ -110,3 +110,27 @@ func TestCoverageResolverPrefersPreciseKey(t *testing.T) {
 		t.Fatalf("match = %+v, want precise import path pct 80", match)
 	}
 }
+
+func TestCleanCoverageKey(t *testing.T) {
+	tests := []struct {
+		name string
+		in   string
+		want string
+	}{
+		{name: "trims whitespace", in: "  example.com/acme/orders  ", want: "example.com/acme/orders"},
+		{name: "converts backslashes", in: `example.com\acme\orders`, want: "example.com/acme/orders"},
+		{name: "trims leading dot slash", in: "./internal/orders", want: "internal/orders"},
+		{name: "collapses repeated slashes", in: "example.com//acme///orders", want: "example.com/acme/orders"},
+		{name: "trims trailing slash", in: "example.com/acme/orders/", want: "example.com/acme/orders"},
+		{name: "keeps root dot stable", in: ".", want: "."},
+		{name: "keeps empty stable", in: "  ", want: ""},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := cleanCoverageKey(tt.in); got != tt.want {
+				t.Fatalf("cleanCoverageKey(%q) = %q, want %q", tt.in, got, tt.want)
+			}
+		})
+	}
+}

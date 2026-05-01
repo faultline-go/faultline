@@ -124,7 +124,14 @@ func coverageKeyCandidates(pkg LoadedPackage, repoRoot string) []string {
 }
 
 func cleanCoverageKey(key string) string {
-	key = strings.TrimSpace(filepath.ToSlash(key))
+	key = strings.TrimSpace(strings.ReplaceAll(key, `\`, "/"))
+	key = filepath.ToSlash(key)
+	for strings.Contains(key, "//") {
+		key = strings.ReplaceAll(key, "//", "/")
+	}
 	key = strings.TrimPrefix(key, "./")
+	if key != "." {
+		key = strings.TrimRight(key, "/")
+	}
 	return key
 }

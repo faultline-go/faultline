@@ -1,0 +1,64 @@
+name: Noisy finding
+description: Report a finding that was technically correct but not useful.
+title: "noise: "
+labels: ["needs-triage", "feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for false positives, unclear evidence, or findings that
+        are too noisy to act on. Do not include private source code or secrets.
+  - type: input
+    id: version
+    attributes:
+      label: Faultline version
+      description: Run `faultline version`.
+      placeholder: "faultline version ..."
+    validations:
+      required: true
+  - type: dropdown
+    id: finding
+    attributes:
+      label: Finding ID
+      options:
+        - FL-BND-001
+        - FL-CHURN-001
+        - FL-COV-001
+        - FL-COV-002
+        - FL-OWN-001
+        - FL-OWN-002
+        - FL-OWN-003
+        - FL-OWN-004
+        - FL-DEP-001
+        - FL-DEP-002
+        - FL-DEP-003
+        - FL-DEP-004
+        - FL-DEP-005
+        - FL-DEP-006
+        - FL-DEP-007
+        - FL-GEN-001
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized evidence
+      description: Paste sanitized finding evidence, package metadata, or report excerpts.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: why_noisy
+    attributes:
+      label: Why was this noisy?
+      description: Explain what made the finding unactionable, misleading, or too broad.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Better behavior
+      description: What should Faultline have reported instead?
+    validations:
+      required: false
