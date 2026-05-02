@@ -14,7 +14,7 @@ go install github.com/faultline-go/faultline/cmd/faultline@latest
 faultline scan ./... --format html --out faultline-report.html
 ```
 
-![Faultline report preview](docs/assets/report-preview.svg)
+![Faultline HTML report screenshot](docs/assets/report-screenshot.png)
 
 Faultline is local-first. It does not upload source code, run a server, execute repository scripts, or require runtime network access. Reports can be generated as HTML, JSON, or SARIF for GitHub code scanning.
 
@@ -283,6 +283,8 @@ faultline config resolved --config faultline.yaml --format yaml --out resolved.y
 Validation checks supported config version, boundary rule shape, resolved `suppression_policy`, suppression required fields and expiry dates, ownership alias/module owner shape, threshold ranges, and unknown keys at the top level and under `ownership`, `owners`, `coverage`, `scoring`, `boundaries[]`, `suppression_policy`, and `suppressions[]`. Unknown keys are warnings by default. With `--strict`, ordinary validation warnings return exit code `1`; enforcement warnings such as nested unknown keys or suppression policy violations, parse errors, and unsupported versions return exit code `2`.
 
 `config schema` generates the supported schema with field types, required status, defaults, validation rules, and examples. `config docs` generates human-readable governance documentation from a specific `faultline.yaml`, including grouped suppressions and a strict-mode readiness summary.
+
+See [docs/config-examples.md](docs/config-examples.md) for sanitized `faultline.yaml` starting points for single-service repositories, multi-module monorepos, CODEOWNERS-heavy repositories, and architecture boundary enforcement.
 
 Scans, baselines, and PR reviews can fail fast on config warnings by using `--strict-config`:
 

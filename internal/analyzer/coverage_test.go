@@ -111,6 +111,53 @@ func TestCoverageResolverPrefersPreciseKey(t *testing.T) {
 	}
 }
 
+func TestCoverageResolverIgnoresUnknownPackageKeys(t *testing.T) {
+	repo := filepath.Join(t.TempDir(), "repo")
+	pkg := LoadedPackage{
+		ID:         "root|example.com/acme/internal/orders",
+		ImportPath: "example.com/acme/internal/orders",
+		Dir:        filepath.Join(repo, "internal", "orders"),
+		ModulePath: "example.com/acme",
+		ModuleRoot: ".",
+	}
+
+	resolver := newCoverageResolver(map[string]float64{
+		"example.com/acme/internal/orders": 71,
+		"example.com/acme/internal/ghost":  12,
+	}, []LoadedPackage{pkg}, repo)
+
+	match, ok := resolver.ForPackage(pkg)
+	if !ok {
+		t.Fatal("expected known package coverage")
+	}
+	if match.Pct != 71 || match.Key != "example.com/acme/internal/orders" {
+		t.Fatalf("match = %+v, want known package coverage", match)
+	}
+}
+
+func TestCoverageResolverNormalizesProfileKeys(t *testing.T) {
+	repo := filepath.Join(t.TempDir(), "repo")
+	pkg := LoadedPackage{
+		ID:         "root|example.com/acme/internal/orders",
+		ImportPath: "example.com/acme/internal/orders",
+		Dir:        filepath.Join(repo, "internal", "orders"),
+		ModulePath: "example.com/acme",
+		ModuleRoot: ".",
+	}
+
+	resolver := newCoverageResolver(map[string]float64{
+		`example.com\acme\internal\orders\`: 82,
+	}, []LoadedPackage{pkg}, repo)
+
+	match, ok := resolver.ForPackage(pkg)
+	if !ok {
+		t.Fatal("expected normalized package coverage")
+	}
+	if match.Pct != 82 || match.Key != "example.com/acme/internal/orders" {
+		t.Fatalf("match = %+v, want normalized key pct 82", match)
+	}
+}
+
 func TestCleanCoverageKey(t *testing.T) {
 	tests := []struct {
 		name string

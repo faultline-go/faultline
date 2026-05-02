@@ -4,6 +4,8 @@ Rule packs are local, reusable Faultline policy files. They let a platform or se
 
 Faultline rule packs are local files only. Faultline does not fetch rule packs from a network, registry, GitHub repository, or SaaS endpoint.
 
+For complete repository-level examples, see [config examples](config-examples.md).
+
 ## Schema
 
 A repository config imports rule packs with `rule_packs`:

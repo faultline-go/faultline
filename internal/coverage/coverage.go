@@ -154,9 +154,18 @@ func parseLine(line string) (block, string, error) {
 // packageFromFilePath extracts the package import path from a coverage file path.
 // e.g. "github.com/example/pkg/file.go" → "github.com/example/pkg"
 func packageFromFilePath(filePath string) string {
+	filePath = cleanPackagePath(filePath)
 	idx := strings.LastIndex(filePath, "/")
 	if idx < 0 {
 		return filePath
 	}
 	return filePath[:idx]
+}
+
+func cleanPackagePath(path string) string {
+	path = strings.TrimSpace(strings.ReplaceAll(path, `\`, "/"))
+	for strings.Contains(path, "//") {
+		path = strings.ReplaceAll(path, "//", "/")
+	}
+	return strings.TrimRight(path, "/")
 }

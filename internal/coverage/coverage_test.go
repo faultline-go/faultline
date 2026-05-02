@@ -37,6 +37,20 @@ func TestParseLine(t *testing.T) {
 			wantCovered: 1,
 		},
 		{
+			name:        "windows separators",
+			line:        `github.com\example\pkg\file.go:10.32,14.2 4 1`,
+			wantPkg:     "github.com/example/pkg",
+			wantStmts:   4,
+			wantCovered: 4,
+		},
+		{
+			name:        "repeated separators",
+			line:        "github.com/example//pkg/file.go:10.32,14.2 4 1",
+			wantPkg:     "github.com/example/pkg",
+			wantStmts:   4,
+			wantCovered: 4,
+		},
+		{
 			name:    "malformed",
 			line:    "not a valid line",
 			wantErr: true,

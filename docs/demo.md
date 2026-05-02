@@ -21,6 +21,8 @@ Open `faultline-report.html` in a browser.
 
 Generated examples are committed for quick review:
 
+![Faultline HTML report screenshot](assets/report-screenshot.png)
+
 - [HTML report](../examples/reports/simple-go-module.html)
 - [JSON report](../examples/reports/simple-go-module.json)
 

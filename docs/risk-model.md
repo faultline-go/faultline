@@ -75,6 +75,8 @@ scoring:
 
 Changing these values changes normalized component scores while preserving the same weighted formula. Treat those changes as policy changes: review them, commit them, and use `faultline config explain` or `faultline config docs` to make the resolved calibration auditable.
 
+See [config examples](config-examples.md) for sanitized starting points that tune these values for common repository shapes.
+
 ## Monorepos And Workspaces
 
 Faultline discovers multiple `go.mod` files under the repository root and detects a root `go.work` when present. Reports include module path, module root, `go.mod` path, go.work inclusion, and whether the module was selected for a scan.
