@@ -54,8 +54,9 @@ make sign-checksums
 Faultline uses semver tags:
 
 ```sh
-git tag -a v0.1.0 -m "v0.1.0"
-git push origin v0.1.0
+VERSION=vX.Y.Z
+git tag -a "${VERSION}" -m "Faultline ${VERSION}"
+git push origin "${VERSION}"
 ```
 
 The CI release dry run runs on manual workflow dispatch without signing or provenance. Version tags run the release workflow, which builds artifacts, generates SBOMs, refreshes checksums, signs the checksum file with Cosign keyless signing, publishes the GHCR image when registry permissions are available, requests GitHub artifact attestations, and uploads release assets to the GitHub release.
@@ -116,8 +117,8 @@ Snapshot and local GoReleaser dry runs disable Docker publishing.
 Container users should verify image provenance through GHCR/GitHub metadata and pinned immutable digests where possible:
 
 ```sh
-docker pull ghcr.io/faultline-go/faultline:v0.1.0
-docker image inspect ghcr.io/faultline-go/faultline:v0.1.0
+docker pull ghcr.io/faultline-go/faultline:vX.Y.Z
+docker image inspect ghcr.io/faultline-go/faultline:vX.Y.Z
 ```
 
 Container tags are convenient, but production CI should prefer pinned digests after the image has been verified.
@@ -157,7 +158,7 @@ shasum -a 256 -c checksums.txt
 Windows users can compare with:
 
 ```powershell
-Get-FileHash .\faultline_v0.1.0_windows_amd64.zip -Algorithm SHA256
+Get-FileHash .\faultline_X.Y.Z_windows_amd64.zip -Algorithm SHA256
 ```
 
 Checksums alone do not prove who produced the checksum file. Use signature verification for authenticity.
@@ -183,14 +184,14 @@ Signature verification proves that the checksum file was signed by the Faultline
 Release workflows generate SPDX JSON SBOMs for release archives:
 
 ```text
-faultline_v0.1.0_linux_amd64.tar.gz.spdx.json
-faultline_v0.1.0_windows_amd64.zip.spdx.json
+faultline_X.Y.Z_linux_amd64.tar.gz.spdx.json
+faultline_X.Y.Z_windows_amd64.zip.spdx.json
 ```
 
 Inspect an SBOM with `jq`:
 
 ```sh
-jq '.packages[] | {name: .name, versionInfo: .versionInfo}' faultline_v0.1.0_linux_amd64.tar.gz.spdx.json
+jq '.packages[] | {name: .name, versionInfo: .versionInfo}' faultline_X.Y.Z_linux_amd64.tar.gz.spdx.json
 ```
 
 The SBOM describes packaged software contents and dependency metadata. It is not a vulnerability scan and does not assert that dependencies are risk-free.
@@ -202,7 +203,7 @@ Release workflows request GitHub artifact attestations for archives, SBOMs, and 
 Verify provenance with the GitHub CLI:
 
 ```sh
-gh attestation verify faultline_v0.1.0_linux_amd64.tar.gz --repo faultline-go/faultline
+gh attestation verify faultline_X.Y.Z_linux_amd64.tar.gz --repo faultline-go/faultline
 ```
 
 Provenance links an artifact to the GitHub Actions workflow that built it. It does not replace checksum or signature verification; use all three for stronger assurance:
