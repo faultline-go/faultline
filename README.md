@@ -635,10 +635,26 @@ Source code and scan data stay in the local environment. Faultline only invokes 
 The easiest way to run Faultline in CI:
 
 ```yaml
-- uses: actions/checkout@v6
-  with:
-    fetch-depth: 0
-- uses: faultline-go/action@v1
+name: Faultline
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+  security-events: write
+
+jobs:
+  faultline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: faultline-go/action@v1
 ```
 
 See [github.com/faultline-go/action](https://github.com/faultline-go/action)
