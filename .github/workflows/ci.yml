@@ -26,7 +26,7 @@ jobs:
       - name: Check formatting
         shell: bash
         run: |
-          files="$(gofmt -l $(find . -name '*.go' -not -path './vendor/*' -not -path './third_party/*'))"
+          files="$(find . -name '*.go' -not -path './vendor/*' -not -path './third_party/*' -print0 | xargs -0 gofmt -l)"
           if [ -n "$files" ]; then
             echo "$files"
             exit 1
@@ -103,5 +103,5 @@ jobs:
           coverage: coverage.out
           fail-on: none
           enterprise-url: https://api.gofaultline.dev
-          enterprise-token: ${{ secrets.FAULTLINE_API_TOKEN }}
+          enterprise-token: ${{ secrets.FAULTLINE_API_TOKEN || vars.FAULTLINE_API_TOKEN }}
           enterprise-org-id: ce28dedc-be2e-410a-b65d-4b51be891f47
