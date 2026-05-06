@@ -7,7 +7,7 @@ DIST_DIR := dist
 LDFLAGS := -s -w -X $(MODULE)/internal/version.Version=$(VERSION) -X $(MODULE)/internal/version.Commit=$(COMMIT) -X $(MODULE)/internal/version.BuildDate=$(DATE)
 PLATFORMS := linux/amd64 linux/arm64 darwin/amd64 darwin/arm64 windows/amd64 windows/arm64
 
-.PHONY: build build-all checksums sbom sign-checksums release-dry-run test lint deadcode tidy-check quality fmt scan-testdata clean
+.PHONY: build build-all checksums sbom sign-checksums sign-tag-test release-dry-run test lint deadcode tidy-check quality fmt scan-testdata clean
 
 build:
 	CGO_ENABLED=0 go build -trimpath -ldflags "$(LDFLAGS)" -o bin/$(BINARY) ./cmd/faultline
@@ -40,6 +40,9 @@ sign-checksums:
 	@test -f $(DIST_DIR)/checksums.txt || { echo "$(DIST_DIR)/checksums.txt not found; run make checksums first"; exit 1; }
 	@command -v cosign >/dev/null 2>&1 || { echo "cosign is required for signing: https://docs.sigstore.dev/cosign/installation/"; exit 1; }
 	cosign sign-blob --yes --output-signature $(DIST_DIR)/checksums.txt.sig --output-certificate $(DIST_DIR)/checksums.txt.pem $(DIST_DIR)/checksums.txt
+
+sign-tag-test:
+	bash scripts/sign-tag-test.sh
 
 release-dry-run:
 	goreleaser release --snapshot --clean

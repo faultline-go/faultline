@@ -55,9 +55,16 @@ Faultline uses semver tags:
 
 ```sh
 VERSION=vX.Y.Z
-git tag -a "${VERSION}" -m "Faultline ${VERSION}"
+bash scripts/sign-tag.sh "${VERSION}"
+git tag -v "${VERSION}"
 git push origin "${VERSION}"
 ```
+
+`scripts/sign-tag.sh` creates a signed annotated tag through GPG loopback
+pinentry and verifies the tag before returning. It reads the passphrase from
+`/home/mike/.passphrase` by default; set `FAULTLINE_GPG_PASSPHRASE_FILE` to use
+another local secret file. Run `make sign-tag-test` after editing the helper or
+release docs.
 
 The CI release dry run runs on manual workflow dispatch without signing or provenance. Version tags run the release workflow, which builds artifacts, generates SBOMs, refreshes checksums, signs the checksum file with Cosign keyless signing, publishes the GHCR image when registry permissions are available, requests GitHub artifact attestations, and uploads release assets to the GitHub release.
 
