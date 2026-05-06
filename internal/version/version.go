@@ -3,15 +3,18 @@ package version
 import (
 	"fmt"
 	"runtime"
+	"runtime/debug"
 	"strings"
 )
 
 // These are set via -ldflags at build time.
 var (
-	Version   = "0.1.1"
+	Version   = "dev"
 	Commit    = "unknown"
 	BuildDate = "unknown"
 )
+
+var readBuildInfo = debug.ReadBuildInfo
 
 type Info struct {
 	Version   string
@@ -23,10 +26,28 @@ type Info struct {
 }
 
 func Get() Info {
+	version := strings.TrimSpace(Version)
+	commit := strings.TrimSpace(Commit)
+	date := strings.TrimSpace(BuildDate)
+
+	if info, ok := readBuildInfo(); ok {
+		if isUnsetVersion(version) {
+			if moduleVersion := buildInfoVersion(info); moduleVersion != "" {
+				version = moduleVersion
+			}
+		}
+		if isUnsetBuildValue(commit) {
+			commit = buildSetting(info, "vcs.revision")
+		}
+		if isUnsetBuildValue(date) {
+			date = buildSetting(info, "vcs.time")
+		}
+	}
+
 	return Info{
-		Version:   sane(Version, "0.1.1"),
-		Commit:    sane(Commit, "unknown"),
-		Date:      sane(BuildDate, "unknown"),
+		Version:   sane(version, "dev"),
+		Commit:    sane(commit, "unknown"),
+		Date:      sane(date, "unknown"),
 		GoVersion: runtime.Version(),
 		OS:        runtime.GOOS,
 		Arch:      runtime.GOARCH,
@@ -53,4 +74,45 @@ func sane(value, fallback string) string {
 		return fallback
 	}
 	return value
+}
+
+func buildInfoVersion(info *debug.BuildInfo) string {
+	if info == nil {
+		return ""
+	}
+	version := strings.TrimSpace(info.Main.Version)
+	if version == "(devel)" {
+		return ""
+	}
+	return version
+}
+
+func buildSetting(info *debug.BuildInfo, key string) string {
+	if info == nil {
+		return ""
+	}
+	for _, setting := range info.Settings {
+		if setting.Key == key {
+			return strings.TrimSpace(setting.Value)
+		}
+	}
+	return ""
+}
+
+func isUnsetVersion(value string) bool {
+	switch strings.TrimSpace(value) {
+	case "", "dev", "0.1.1":
+		return true
+	default:
+		return false
+	}
+}
+
+func isUnsetBuildValue(value string) bool {
+	switch strings.TrimSpace(value) {
+	case "", "unknown":
+		return true
+	default:
+		return false
+	}
 }
