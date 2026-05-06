@@ -119,8 +119,8 @@ faultline version
 Install from a release archive:
 
 ```sh
-# Pick the archive for your OS and architecture from GitHub Releases.
-VERSION=v0.2.3
+# Pick a release from GitHub Releases.
+VERSION=vX.Y.Z
 curl -L -o faultline.tar.gz "https://github.com/faultline-go/faultline/releases/download/${VERSION}/faultline_${VERSION#v}_linux_amd64.tar.gz"
 curl -L -o checksums.txt "https://github.com/faultline-go/faultline/releases/download/${VERSION}/checksums.txt"
 sha256sum --check --ignore-missing checksums.txt
