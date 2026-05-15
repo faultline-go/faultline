@@ -1,12 +1,16 @@
-version: "1"
+version: 1
 suppressions:
-  - finding_code: FL-DEP-007
-    package_ref: "testdata/multi-module-repo/service-a"
-    reason: "Test fixture — intentional local replace for multi-module test scenario"
+  - id: FL-DEP-007
+    category: DEPENDENCY
+    package: "testdata/multi-module-repo/service-a"
+    reason: "Test fixture: intentional local replace for multi-module test scenario"
     owner: "@faultline-go/core"
+    created: "2026-05-15"
     expires: "2027-01-01"
-  - finding_code: FL-DEP-002
-    package_ref: "testdata/multi-module-repo/service-a"
-    reason: "Test fixture — intentional local replace for multi-module test scenario"
+  - id: FL-DEP-002
+    category: DEPENDENCY
+    package: "testdata/multi-module-repo/service-a"
+    reason: "Test fixture: intentional local replace for multi-module test scenario"
     owner: "@faultline-go/core"
+    created: "2026-05-15"
     expires: "2027-01-01"

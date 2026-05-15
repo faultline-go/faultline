@@ -77,6 +77,21 @@ Changing these values changes normalized component scores while preserving the s
 
 See [config examples](config-examples.md) for sanitized starting points that tune these values for common repository shapes.
 
+## v1.0 Scoring Stability
+
+For the v1.0 line, Faultline keeps the published scoring formula, default
+weights, default calibration constants, component names, and 0-100 score scale
+stable. Patch and minor releases may add findings, improve evidence, fix bugs,
+or add opt-in configuration, but they should not silently reweight existing
+score components or change the default interpretation of an unchanged
+`faultline.yaml`.
+
+Scores can still change when repository inputs change, when time-windowed git
+history moves, when coverage profiles differ, when CODEOWNERS or config policy
+changes, or when a bug fix corrects previously incorrect input handling. Treat
+score movements from those causes as expected scanner output, not scoring
+contract breaks.
+
 ## Monorepos And Workspaces
 
 Faultline discovers multiple `go.mod` files under the repository root and detects a root `go.work` when present. Reports include module path, module root, `go.mod` path, go.work inclusion, and whether the module was selected for a scan.

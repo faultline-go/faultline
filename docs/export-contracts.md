@@ -50,6 +50,18 @@ Commercial services should version ingestion by `schema_version`, not by the
 internal Go package layout. The enterprise backend should support at least the
 latest two minor versions of the snapshot schema after the first paid release.
 
+## v1.0 Compatibility Promise
+
+For the v1.0 line, `faultline.snapshot.v1` is the stable metadata-only
+integration contract. Patch and minor releases may add optional fields, add new
+finding IDs, or populate previously empty optional arrays, but they must not
+rename existing JSON fields, change field meanings, change required top-level
+types, or add source-code-bearing fields to the snapshot.
+
+Any incompatible export change requires a new `schema_version`. Consumers should
+ignore unknown fields and should reject unknown schema versions unless they have
+explicitly added support for that version.
+
 ## Example Usage
 
 ```go

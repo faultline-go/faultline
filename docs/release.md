@@ -24,6 +24,30 @@ make checksums
 goreleaser release --snapshot --clean
 ```
 
+## v1.0 Release Candidate Gate
+
+Before promoting a v1.0 release candidate, run the OSS dogfood and release
+contract gate from a clean working tree:
+
+```sh
+make quality
+go test ./... -coverprofile=coverage.out
+go run ./cmd/faultline config validate --config .faultline.yaml --strict
+go run ./cmd/faultline scan ./... \
+  --config .faultline.yaml \
+  --strict-config \
+  --coverage coverage.out \
+  --format snapshot \
+  --out faultline-snapshot.json \
+  --no-history
+jq -e '.schema_version == "faultline.snapshot.v1" and (.packages | type == "array") and (.created_at | type == "string")' faultline-snapshot.json
+goreleaser release --snapshot --clean
+```
+
+The gate proves the repository config is current, the OSS scanner can consume
+its own coverage profile, the v1 snapshot contract is emitted, and the release
+packaging path still works locally.
+
 `make build-all` writes platform binaries to `dist/` for:
 
 - linux amd64/arm64

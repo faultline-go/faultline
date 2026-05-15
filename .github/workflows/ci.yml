@@ -33,6 +33,20 @@ jobs:
           fi
       - name: Test
         run: go test ./...
+      - name: Dogfood config and snapshot scan
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          go test ./... -coverprofile=coverage.out
+          go run ./cmd/faultline config validate --config .faultline.yaml --strict
+          go run ./cmd/faultline scan ./... \
+            --config .faultline.yaml \
+            --strict-config \
+            --coverage coverage.out \
+            --format snapshot \
+            --out faultline-snapshot.json \
+            --no-history
+          jq -e '.schema_version == "faultline.snapshot.v1" and (.packages | type == "array") and (.created_at | type == "string")' faultline-snapshot.json
       - name: Go module tidy check
         if: runner.os == 'Linux'
         shell: bash
