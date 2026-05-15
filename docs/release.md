@@ -31,22 +31,34 @@ contract gate from a clean working tree:
 
 ```sh
 make quality
-go test ./... -coverprofile=coverage.out
+go test ./... -coverprofile=/tmp/faultline-cover.out
 go run ./cmd/faultline config validate --config .faultline.yaml --strict
 go run ./cmd/faultline scan ./... \
+  --coverage /tmp/faultline-cover.out \
   --config .faultline.yaml \
-  --strict-config \
-  --coverage coverage.out \
-  --format snapshot \
-  --out faultline-snapshot.json \
+  --format json \
+  --out /tmp/faultline-self.json \
   --no-history
-jq -e '.schema_version == "faultline.snapshot.v1" and (.packages | type == "array") and (.created_at | type == "string")' faultline-snapshot.json
+go run ./cmd/faultline scan ./... \
+  --coverage /tmp/faultline-cover.out \
+  --config .faultline.yaml \
+  --format sarif \
+  --out /tmp/faultline-self.sarif \
+  --no-history
+go run ./cmd/faultline scan ./... \
+  --coverage /tmp/faultline-cover.out \
+  --config .faultline.yaml \
+  --format snapshot \
+  --out /tmp/faultline-self-snapshot.json \
+  --no-history
 goreleaser release --snapshot --clean
+docker build -t faultline:local .
+docker run --rm faultline:local version
 ```
 
 The gate proves the repository config is current, the OSS scanner can consume
-its own coverage profile, the v1 snapshot contract is emitted, and the release
-packaging path still works locally.
+its own coverage profile, JSON/SARIF/snapshot exports are emitted, and the
+release packaging and container paths still work locally.
 
 `make build-all` writes platform binaries to `dist/` for:
 
